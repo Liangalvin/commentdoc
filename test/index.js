@@ -15,7 +15,7 @@ describe('#read', function () {
 		expect(read).to.throw(Error);
 	});
 	it('should read the contents of a file', function () {
-		var expected = '// how now\nbrown cow';
+		var expected = '// how now\nbrown cow\n';
 		var actual = read('testRead.js');
 		assert.equal(expected, actual);
 	});

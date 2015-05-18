@@ -40,8 +40,8 @@ describe('#write', function() {
       var fileName = 'testRead.js',
           text = read(fileName),
           filteredText = filter(fileName, text),
-          writeFile = write('testResult.md', filteredText),
-          newFile = 'testResult.md',
+          writeFile = write('testWrite.md', filteredText),
+          newFile = 'testWrite.md',
           readNewFile = read(newFile);
 
           (readNewFile).should.equal('From testRead.js\n\nLine 0: how now\n');
@@ -49,37 +49,4 @@ describe('#write', function() {
     it('is a function', function(){
         (typeof write).should.equal('function');
     });
-});
-
-describe('#extract', function() {
-	it('is a function', function () {
-		expect(typeof filter).to.equal('function');
-	});
-	it(
-		'should return an array with the file name and only the comments in a file and their line number',
-		function () {
-			var fileName = 'testRead.js';
-			var text = read(fileName);
-			var filteredText = filter(fileName, text);
-			var expected = ['From testRead.js\n', 'Line 0: how now'];
-			filteredText.should.eql(expected);
-		});
-});
-describe('#write', function () {
-	it('is a function', function () {
-		expect(typeof write).to.equal('function');
-	});
-	it('should write a file with a given array', function () {
-		var fileToRead = 'testRead.js';
-		var text = read(fileToRead);
-		var filteredText = filter(fileToRead, text);
-		var newFile = 'testWrite.md';
-		var expected = 'From testRead.js\n\nLine 0: how now\n';
-
-		write(newFile, filteredText);
-		contentsOfNewFile = read(newFile);
-		expect(
-			contentsOfNewFile).to.equal(expected);
-	});
-
 });
